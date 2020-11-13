@@ -1,24 +1,52 @@
-# README
+# テーブル設計
+## users テーブル
+| Column              | Type      | Options     |
+| ------------------  | ------    | ----------- |
+| email               | string    | null:false  |
+| password            | string    | null:false  |
+|  age                | string    | null:false  |
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+### Association
+- has_many :meets
+- has_one :show
+- belongs_to :comment
 
-Things you may want to cover:
+## shows テーブル
+| Column                 | Type      | Options      |
+| ---------------------  | ------    | -----------  |
+| height                 | integer   | null:false   |
+| body_id                | integer   | null:false   |
+| blood_type_id          | integer   | null:false   |
+| residence_id           | integer   | null:false   |
+| birth_place_id         | integer   | null:false   |
+| occupation_id          | integer   | null:false   |
+| income_id              | integer   | null:false   | 
+| liking                 | string    | null:false   |
+| user                   | references| foreign: key true|
 
-* Ruby version
+### Association
+- belongs_to :user
 
-* System dependencies
 
-* Configuration
+## meets テーブル
+| Column                 | Type       | Options            |
+| ---------------------- | ------     | -------------------|
+| text                   | text       | null: false        |
+| user                   | references | foreign_key: true  |
 
-* Database creation
+### Association
+- belongs_to :user
+- has_many   :comments 
 
-* Database initialization
+## comments テーブル
+| Column     | Type          | Options           |
+| -----------| ----------    | ----------------- |
+| meet       | references    | foreign_key: true |
+| user       | references    | foreign_key: true |
+ 
+### Association
+ 
+- belongs_to :user
+- belongs_to :meet
 
-* How to run the test suite
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
