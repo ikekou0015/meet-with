@@ -4,7 +4,7 @@
 | ------------------  | ------    | ----------- |
 | email               | string    | null:false  |
 | password            | string    | null:false  |
-|  age                | string    | null:false  |
+| birth_date          | date      | null:false  |
 
 ### Association
 - has_many :meets
