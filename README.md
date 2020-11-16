@@ -14,7 +14,7 @@
 ## shows テーブル
 | Column                 | Type      | Options      |
 | ---------------------  | ------    | -----------  |
-| height                 | integer   | null:false   |
+| height                 | string    | null:false   |
 | body_id                | integer   | null:false   |
 | blood_type_id          | integer   | null:false   |
 | residence_id           | integer   | null:false   |

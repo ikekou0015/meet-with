@@ -1,11 +1,14 @@
-<p>Find me in app/views/meet_withs/index.html.erb</p>
+<%#<p>Find me in app/views/meet_withs/index.html.erb</p>%>
 <h1>投稿一覧</h1>
 <div class="contents row">
   <% @meet_withs.each do |meet_with| %>
     
       <p><%= meet_with.text %></p>
-      <span class="name">
-        <%= meet_with.user.nickname %>
+      <span class="user-name">
+        <%= link_to meet_with.user.nickname, user_path(meet_with.user.id)%>
       </span>
+      <div>
+      <%= image_tag meet_with.user.image, class: "user-img" %>
+      </div>
     </div>
   <% end %>
