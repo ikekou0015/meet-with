@@ -1,0 +1,58 @@
+<h1>ユーザー詳細ページ</h1>
+<h2>
+<b><label class="show-text">ニックネーム</label>
+<%= @user.nickname %>
+</b></h2>
+
+<div>
+<% if user_signed_in? %>
+<% if current_user.id == @user.id %>
+<%= link_to "編集する", edit_user_registration_path(@user.id) %>
+<% end %>
+<% end %>
+</div>
+
+<div>
+<%= image_tag @user.image if @user.image.attached? %>
+</div>
+<div>
+<span>年齢</span>
+<%= @user.age %>
+</div>
+<div>
+<span>性別</span>
+<%= @user.gender.name %>
+</div>
+<div>
+<span>身長</span>
+<%= @user.height %>
+</div>
+<div>
+<span>体型</span>
+<%= @user.body.name %>
+</div>
+<div>
+<span>血液型</span>
+<%= @user.blood_type.name %>
+</div>
+<div>
+<span>出身地</span>
+<%= @user.birth_place.name %>
+</div>
+<div>
+<span>居住地</span>
+<%= @user.residence.name %>
+</div>
+<div>
+<span>職業</span>
+<%= @user.occupation.name %>
+</div>
+<div>
+<span>年収</span>
+<%= @user.income.name %>
+</div>
+<div>
+<span>趣味</span>
+<%= @user.liking%>
+</div>
+

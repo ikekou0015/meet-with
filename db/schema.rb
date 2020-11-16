@@ -46,6 +46,16 @@ ActiveRecord::Schema.define(version: 2020_11_13_141153) do
     t.string "encrypted_password", default: "", null: false
     t.string "nickname", default: "", null: false
     t.date "birth_date"
+    t.string "gender_id", null: false
+    t.string "age", default: "", null: false
+    t.string "height", default: "", null: false
+    t.integer "body_id"
+    t.integer "blood_type_id"
+    t.integer "birth_place_id"
+    t.integer "residence_id"
+    t.integer "occupation_id"
+    t.integer "income_id"
+    t.string "liking", default: "", null: false
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
