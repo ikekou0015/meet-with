@@ -1,0 +1,12 @@
+<%= form_with(model: @meet_with, url: meet_withs_path, local: true) do |f|%>
+
+<div class="field">
+<%= f.label :text, "新規投稿内容" %><br />
+    <%= f.text_field :text %>
+  </div>
+
+<div class="actions">
+    <%= f.submit "投稿する", class: :form__btn  %>
+  </div>
+
+<% end %>
