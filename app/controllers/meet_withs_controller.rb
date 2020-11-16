@@ -18,9 +18,13 @@ class MeetWithsController < ApplicationController
     end
   end
 
-
+   def destroy
+    @meet_with = Meetwith.find(params[:id])
+    @meet_with.destroy
+    redirect_to root_path
+   end
   private
      def meet_with_params
-      params.require(:meetwith).permit(:text).merge(user_id: current_user.id)
+      params.permit(:text).merge(user_id: current_user.id)
      end
 end
