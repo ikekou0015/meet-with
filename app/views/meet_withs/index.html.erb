@@ -3,14 +3,14 @@
 <div class="contents row">
   <% @meet_withs.each do |meet_with| %>
     
-      <p><%= meet_with.text %></p>
+      <%= link_to meet_with.text, meet_with_path(meet_with.id) %>
       <span class="user-name">
         <%= link_to meet_with.user.nickname, user_path(meet_with.user.id) %>
         <%= meet_with.user.age %>
       </span>
     <% if user_signed_in? %>
     <% if current_user.id == meet_with.user.id %>
-      <%= link_to "投稿を削除する", meet_with_path(meet_with.user.id), method: :delete, class:'meet-with-destroy' %>
+      <%= link_to "投稿を削除する", meet_with_path(meet_with.id), method: :delete, class:'meet-with-destroy' %>
     <% end %>
     <% end %>
       <div>

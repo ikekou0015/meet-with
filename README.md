@@ -43,7 +43,7 @@
 | -----------| ----------    | ----------------- |
 | meet       | references    | foreign_key: true |
 | user       | references    | foreign_key: true |
- 
+| text       | text          | null:      false  |
 ### Association
  
 - belongs_to :user
