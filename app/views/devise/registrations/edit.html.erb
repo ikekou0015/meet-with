@@ -1,16 +1,20 @@
+
+
+
 <%= form_with model: @user, url: user_registration_path,class: 'registration-main', local: true do |f| %>
+
 <div class='form-wrap'>
   <div class='form-header'>
     <h1 class='form-header-text'>
-      会員情報入力
+      プロフィール編集
     </h1>
   </div>
-  <%= render "devise/shared/error_messages", resource: resource %>
+  
 
    <div class="form-group">
     <div class='form-text-wrap'>
       <label class="form-text">顔写真</label>
-      <span class="indispensable">必須</span>
+      <span class="indispensable"></span>
     </div>
       <p>クリックしてファイルをアップロード</p>
     <%= f.file_field :image, id:"image" %> 
@@ -19,7 +23,7 @@
   <div class="form-group">
     <div class='form-text-wrap'>
       <label class="form-text">ニックネーム</label>
-      <span class="indispensable">必須</span>
+      <span class="indispensable"></span>
     </div>
 
     <%= f.text_field :nickname, class:"input-default", id:"nickname", placeholder:"例) meet太郎" %>
@@ -28,7 +32,7 @@
    <div class="form-group">
     <div class='form-text-wrap'>
       <label class="form-text">メールアドレス</label>
-      <span class="indispensable">必須</span>
+      <span class="indispensable"></span>
     </div>
     <%= f.email_field :email, class:"input-default", id:"email", placeholder:"PC・携帯どちらでも可", autofocus: true %>
   </div>
@@ -36,7 +40,7 @@
   <div class="form-group">
     <div class='form-text-wrap'>
       <label class="form-text">生年月日</label>
-      <span class="indispensable">必須</span>
+      <span class="indispensable"></span>
     </div>
     <div class='input-birth-wrap'>
       <%= raw sprintf(
@@ -55,15 +59,17 @@
     <div class="form-group">
     <div class='form-text-wrap'>
       <label class="form-text">性別</label>
-      <span class="indispensable">必須</span>
+      <span class="indispensable"></span>
     </div>
+    <div class='input-birth-wrap'>
     <%= f.collection_select(:gender_id, Gender.all, :id, :name, {}, {class:"select-box", id:"gender"}) %>
+  </div>
   </div>
 
     <div class="form-group">
     <div class='form-text-wrap'>
       <label class="form-text">年齢</label>
-      <span class="indispensable">任意</span>
+      <span class="indispensable"></span>
     </div>
 
     <%= f.text_field :age, class:"input-default", id:"age" %>
@@ -72,7 +78,7 @@
    <div class="form-group">
     <div class='form-text-wrap'>
       <label class="form-text">身長</label>
-      <span class="indispensable">任意</span>
+      <span class="indispensable"></span>
     </div>
     <%= f.text_field :height, class:"input-default", id:"height" %>
   </div>
@@ -80,7 +86,7 @@
   <div class="form-group">
     <div class='form-text-wrap'>
       <label class="form-text">体型</label>
-      <span class="indispensable">任意</span>
+      <span class="indispensable"></span>
     </div>
     <%= f.collection_select(:body_id, Body.all, :id, :name, {}, {class:"input-default", id:"body"}) %>
   </div>
@@ -88,7 +94,7 @@
   <div class="form-group">
     <div class='form-text-wrap'>
       <label class="form-text">血液型</label>
-      <span class="indispensable">任意</span>
+      <span class="indispensable"></span>
     </div>
     <%= f.collection_select(:blood_type_id, BloodType.all, :id, :name, {}, {class:"input-default", id:"blood_type"}) %>
   </div>
@@ -96,7 +102,7 @@
   <div class="form-group">
     <div class='form-text-wrap'>
       <label class="form-text">出身地</label>
-      <span class="indispensable">任意</span>
+      <span class="indispensable"></span>
     </div>
     <%= f.collection_select(:birth_place_id, BirthPlace.all, :id, :name, {}, {class:"input-default", id:"birth_place"}) %>
   </div>
@@ -104,7 +110,7 @@
   <div class="form-group">
     <div class='form-text-wrap'>
       <label class="form-text">居住地</label>
-      <span class="indispensable">任意</span>
+      <span class="indispensable"></span>
     </div>
     <%= f.collection_select(:residence_id, Residence.all, :id, :name, {}, {class:"input-default", id:"residence"}) %>
   </div>
@@ -112,7 +118,7 @@
   <div class="form-group">
     <div class='form-text-wrap'>
       <label class="form-text">職業</label>
-      <span class="indispensable">任意</span>
+      <span class="indispensable"></span>
     </div>
     <%= f.collection_select(:occupation_id, Occupation.all, :id, :name, {}, {class:"input-default", id:"occupation"}) %>
   </div>
@@ -120,7 +126,7 @@
   <div class="form-group">
     <div class='form-text-wrap'>
       <label class="form-text">年収</label>
-      <span class="indispensable">任意</span>
+      <span class="indispensable"></span>
     </div>
     <%= f.collection_select(:income_id, Income.all, :id, :name, {}, {class:"input-default", id:"income"}) %>
   </div>
@@ -128,19 +134,21 @@
 <div class="form-group">
     <div class='form-text-wrap'>
       <label class="form-text">趣味</label>
-      <span class="indispensable">任意</span>
+      <span class="indispensable"></span>
     </div>
 
     <%= f.text_field :liking, class:"input-default", id:"liking" %>
    </div>
 
-  <div class="actions">
-    <%= f.submit "変更する" %>
+  <div class="form-group">
+    <h2 class='form-bottom-text'>
+    </h2>
   </div>
+  <div class='register-btn'>
+    <%= f.submit "変更する" ,class:"register-red-btn" %>
+  </div>
+  
+</div>
 <% end %>
 
-<h3>Cancel my account</h3>
 
-<p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
-
-<%= link_to "Back", :back %>
