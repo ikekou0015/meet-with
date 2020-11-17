@@ -25,6 +25,7 @@ class MeetWithsController < ApplicationController
     @meet_with.destroy
     redirect_to root_path
   end
+
   private
      def meet_with_params
       params.require(:meetwith).permit(:text).merge(user_id: current_user.id)
