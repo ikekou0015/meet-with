@@ -1,0 +1,12 @@
+<h1>ツイートコメントページ</h1>
+
+<h2>
+<%= @meet_with.text %>
+</h2>
+<div>
+<%= @meet_with.user.nickname %>
+<%= @meet_with.user.age %>
+</div>
+
+
+<%= image_tag @meet_with.user.image, class: "user-img" %>
