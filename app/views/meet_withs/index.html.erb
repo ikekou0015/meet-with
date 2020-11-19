@@ -1,20 +1,73 @@
-<%#<p>Find me in app/views/meet_withs/index.html.erb</p>%>
-<h1>投稿一覧</h1>
-<div class="contents row">
-  <% @meet_withs.each do |meet_with| %>
-    
-      <%= link_to meet_with.text, meet_with_path(meet_with.id) %>
-      <span class="user-name">
-        <%= link_to meet_with.user.nickname, user_path(meet_with.user.id) %>
-        <%= meet_with.user.age %>
-      </span>
-    <% if user_signed_in? %>
-    <% if current_user.id == meet_with.user.id %>
-      <%= link_to "投稿を削除する", meet_with_path(meet_with.id), method: :delete, class:'meet-with-destroy' %>
-    <% end %>
-    <% end %>
-      <div>
-      <%= image_tag meet_with.user.image, class: "user-img" %>
-      </div>
+  <body>
+  <!--スライドショー-->
+  <div class="keyvisual">
+    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+  <ol class="carousel-indicators">
+    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+  </ol>
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <%= image_tag "img1.jpg", class:"bd-placeholder-img bd-placeholder-img-lg d-block w-100"%>
+      
     </div>
-  <% end %>
+    <div class="carousel-item">
+      <%= image_tag "img2.jpg", class:"bd-placeholder-img bd-placeholder-img-lg d-block w-100"%>
+    </div>
+    <div class="carousel-item">
+      <%= image_tag "img6.jpg", class:"bd-placeholder-img bd-placeholder-img-lg d-block w-100"%>
+    </div>
+  </div>
+  <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
+ </div>
+</div>
+<div class= ="container bg-light py-5 my-5">
+<!--meet_withの特徴--->  
+  <div id="column">
+    <h2 class="text-center mt-5 py-3">meet_withの特徴</h2>
+  </div>
+  <div class="row mt-5">
+      <div class="col-md-4 col-12">
+        <%= image_tag "meet1.jpg", class:"img-fluid" %>
+      </div>
+      <div class="col-md-4 col-12">
+        <%= image_tag "meet2.jpg", class:"img-fluid" %>
+      </div>
+      <div class="col-md-4 col-12">
+        <%= image_tag "meet3.jpg", class:"img-fluid" %>
+      </div>
+   </div>
+
+   
+<!--利用者の声--->  
+  <div id="Flex">
+    <h2 class="text-center mt-5 py-3">利用者の声</h2>
+  </div>
+  <div class="d-flex bg-light flex-wrap-reverse justify-content-center">
+     <div class=" col-md-6 col-12 p-0 align-self-center h3 p-4">
+       ダミーテキストダミーテキストダミーテキストダミーテキストダミーテキストダミーテキスト
+     </div>
+     <div class=" col-md-6 col-12 p-0 align-self-center h3 p-4">
+     <%= image_tag "koe1.jpg", class:"img-fluid col-md-12 col-12 p-0" %>
+     </div>
+    </div>
+  <div class="d-flex flex-wrap justify-content-center">
+    <div class=" col-md-6 col-12 p-0 align-self-center h3 p-4">
+     <%= image_tag "koe2.jpg", class:"img-fluid col-md-12 col-12 p-0" %>
+     </div>
+     <div class=" col-md-6 col-12 p-0 align-self-center h3 p-4">
+       ダミーテキストダミーテキストダミーテキストダミーテキストダミーテキストダミーテキスト
+     </div>
+    </div>
+    
+    
+  </body>
+</html>

@@ -4,7 +4,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   has_one_attached :image
-  has_many :meetwiths
+  has_many :meet_withs
 
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to :body
@@ -17,8 +17,6 @@ class User < ApplicationRecord
 
   with_options presence: true do
     validates :nickname
-    validates :birth_date
-    validates :image
     validates :gender_id, numericality: { other_than: 1 }
   end
 end
