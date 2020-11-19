@@ -45,10 +45,9 @@ ActiveRecord::Schema.define(version: 2020_11_13_141153) do
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "nickname", default: "", null: false
-    t.date "birth_date"
     t.integer "gender_id", default: 1, null: false
-    t.string "age", default: "", null: false
-    t.string "height", default: "", null: false
+    t.string "age", default: ""
+    t.string "height", default: ""
     t.integer "body_id", default: 1
     t.integer "blood_type_id", default: 1
     t.integer "birth_place_id", default: 1
