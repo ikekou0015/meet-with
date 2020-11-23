@@ -34,6 +34,7 @@ ActiveRecord::Schema.define(version: 2020_11_13_141153) do
   end
 
   create_table "meetwiths", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "title", default: "", null: false
     t.text "text", null: false
     t.bigint "user_id"
     t.datetime "created_at", precision: 6, null: false

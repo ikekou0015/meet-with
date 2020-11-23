@@ -1,4 +1,4 @@
-  <div class="container mt-5 bg-light">
+  <div class="container mt-5 mb-5 bg-light">
          <h1>会員新規登録</h1>
 <%= form_with model: @user, url: user_registration_path, local: true do |f| %>
 
@@ -37,7 +37,7 @@
 <% end %>
 </div>
 
-
+<%= render "shared/footer"%> 
 
 
 
