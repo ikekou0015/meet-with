@@ -28,6 +28,6 @@ class MeetWithsController < ApplicationController
 
   private
      def meet_with_params
-      params.require(:meetwith).permit(:text).merge(user_id: current_user.id)
+      params.require(:meetwith).permit(:text, :title, :image).merge(user_id: current_user.id)
      end
 end

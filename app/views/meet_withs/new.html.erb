@@ -1,0 +1,23 @@
+   <div class="container  mt-5 mb-5 d-flex justify-content-center flex-column bg-light">
+   <div>
+      <h1>ツイート画面<h1>
+   </div>
+   <div class="form mt-5">
+ <%= form_with model: @meet_with, url: meet_withs_path, local: true do |f| %>
+   <div class="form-group">
+     <label for="image">画像</label>
+     <%= f.file_field :image, id:"image", class:"form-control-file" %>
+   </div>
+   <div class="form-group col-8">
+     <label for="Inputtitle">タイトル</label>
+     <%= f.text_field :title, class:"form-control", id:"Inputtitle" %>
+   </div>
+    <div class="form-group col-8">
+    <label for="Textarea">コメント</label>
+    <%= f.text_area :text, class:"form-control", id:"Textarea"%>
+   </div>
+   <%= f.submit "ツイート", class:"btn btn-primary col-4" %>
+ <% end %>
+   </div>
+   </div>
+   <%= render "shared/footer"%> 
