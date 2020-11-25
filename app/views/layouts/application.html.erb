@@ -36,7 +36,7 @@
 
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
         <% unless user_signed_in? %>
-            <%= link_to "新規登録", new_user_registration_path, class:"dropdown-item text-dark" %> 
+            <%= link_to "新規登録", new_user_path, class:"dropdown-item text-dark" %> 
             <%= link_to "ログイン", new_user_session_path, class:"dropdown-item text-dark" %>
         <% else %>
             <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class:"dropdown-item text-dark" %>
