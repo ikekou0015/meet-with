@@ -1,0 +1,15 @@
+<div class="container d-flex justify-content-center mt-5 mb-5 bg-light">
+ <div class="d-flex flex-column col-7">
+   <div class="mt-5">
+     <%= link_to "メールアドレスで登録", new_user_registration_path, class:"form-control bg-secondary text-white text-center" %>
+   </div>
+   <div class="mt-5">
+     <%= link_to 'Facebookで登録', user_facebook_omniauth_authorize_path, class:"form-control bg-success text-white text-center", method: :post%>
+   </div>
+   <div class="mt-5 mb-5">
+     <%= link_to 'Googleで登録', user_google_oauth2_omniauth_authorize_path, class:"form-control bg-primary text-white text-center", method: :post%>
+   </div>
+  </div>
+</div>
+
+<%= render "shared/footer"%> 

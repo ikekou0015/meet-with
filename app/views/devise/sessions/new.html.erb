@@ -19,6 +19,14 @@
 </div>
 
 <% end %>
+<div class="row mt-3">
+    <div class="col">
+ <%= link_to 'Facebookでログイン', user_facebook_omniauth_authorize_path, method: :post, class:"form-control bg-primary text-white text-center" %>
+    </div>
+    <div class="col">
+ <%= link_to 'Googleでログイン', user_google_oauth2_omniauth_authorize_path, method: :post, class:"form-control bg-success text-white text-center" %>
+    </div>
+  </div>
 </div>
 
 <%= render "shared/footer"%> 
