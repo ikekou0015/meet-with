@@ -2,7 +2,7 @@
   <div class="rounded mx-auto d-block mb-5 mt-5">
     <h1>ユーザーページ<h1>
   </div>
-<%= image_tag @user.image, class:"rounded mx-auto d-block img-fluid col-4 img-thumbnail" %>
+<%= image_tag @user.image, class:"rounded mx-auto d-block img-fluid col-4 img-thumbnail" if @user.image.attached? %>
  
  <div class="d-flex justify-content-center">
  <ul class="list-group mt-5 col-5   ">
