@@ -1,31 +1,31 @@
 ・アプリケーション名
-    meet-with
+     meet-with
 
 ・アプリケーション概要
 
-   　 ユーザー登録(画像投稿機能、snsアカウント使用可能)
+   　  ユーザー登録(画像投稿機能、snsアカウント使用可能)
      
-   　 ツイート投稿できる
+   　  ツイート投稿できる
      
-   　 ユーザー同士のフォローができる
+   　  ユーザー同士のフォローができる
      
-   　 ユーザー同士のマッチング(実装予定)
-     
-   　 マッチングしたユーザー同士の個人ルームでのチャットをすることができる(実装予定)
+   　  ユーザー同士のマッチング(実装予定)
+      
+   　  マッチングしたユーザー同士の個人ルームでのチャットをすることができる(実装予定)
 
 ・URL
     https://meet-with.herokuapp.com/
 
 ・テスト用アカウント
 
-   　email ikekou@gmail.com
+   　 email ikekou@gmail.com
    
-  　 password  ikekou0015
+  　  password  ikekou0015
 
-   　email  ikeritu@gmail.com
+   　 email  ikeritu@gmail.com
    
-  　 password ikeritu0015
-
+  　  password ikeritu0015
+ 
 ・利用方法
 
     新規登録をしてツイートを投稿します。
