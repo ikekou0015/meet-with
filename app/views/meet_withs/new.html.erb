@@ -1,23 +1,31 @@
    <div class="container  mt-5 mb-5 d-flex justify-content-center flex-column bg-light">
    <div>
-      <h1>ツイート画面<h1>
+      <h1>つぶやき一覧<h1>
    </div>
    <div class="form mt-5">
- <%= form_with model: @meet_with, url: meet_withs_path, local: true do |f| %>
-   <div class="form-group">
-     <label for="image">画像</label>
-     <%= f.file_field :image, id:"image", class:"form-control-file" %>
-   </div>
-   <div class="form-group col-8">
-     <label for="Inputtitle">タイトル</label>
-     <%= f.text_field :title, class:"form-control", id:"Inputtitle" %>
-   </div>
-    <div class="form-group col-8">
+ <%= form_with model: @meet_with, url: meet_withs_path, local: :ture do |f| %>
+   
+    <div class="form-group col-6">
     <label for="Textarea">コメント</label>
     <%= f.text_area :text, class:"form-control", id:"Textarea"%>
    </div>
-   <%= f.submit "ツイート", class:"btn btn-primary col-4" %>
+   <%= f.submit "つぶやく", class:"btn btn-success col-4" %>
  <% end %>
    </div>
    </div>
+
+  <% @meet_withs.reverse_each do |meet_with| %>
+<div class="media mb-5 ml-5 bg-light border border-danger col-6 rounded-pill" id='meet_with' >
+  <%= link_to image_tag(meet_with.user.image,class:"rounded mx-auto d-block col-5 m-1 rounded-circle"), user_path(meet_with.user.id) %>
+  <div class="media-body m-3">
+    <h5 class="mt-0"><%= meet_with.user.nickname %></h5>
+    <%= meet_with.text %>
+    <% if user_signed_in? && current_user.id == meet_with.user_id %>
+    <%= link_to 'つぶやきを削除する', meet_with_path(meet_with.id), method: :delete, class:"badge badge-danger ml-5 mt-3" %>
+    <% end %>
+  </div>
+</div>
+  <% end %>
+  </div>
+</div>
    <%= render "shared/footer"%> 
