@@ -1,52 +1,60 @@
-# テーブル設計
-## users テーブル
-| Column              | Type      | Options     |
-| ------------------  | ------    | ----------- |
-| email               | string    | null:false  |
-| password            | string    | null:false  |
-| birth_date          | date      | null:false  |
+・アプリケーション名
+    meet-with
 
-### Association
-- has_many :meets
-- has_one :show
-- belongs_to :comment
+・アプリケーション概要
+    ユーザー登録(画像投稿機能、snsアカウント使用可能)
+    ツイート投稿できる
+    ユーザー同士のフォローができる
+    ユーザー同士のマッチング(実装予定)
+    マッチングしたユーザー同士の個人ルームでのチャットをすることができる(実装予定)
 
-## shows テーブル
-| Column                 | Type      | Options      |
-| ---------------------  | ------    | -----------  |
-| height                 | string    | null:false   |
-| body_id                | integer   | null:false   |
-| blood_type_id          | integer   | null:false   |
-| residence_id           | integer   | null:false   |
-| birth_place_id         | integer   | null:false   |
-| occupation_id          | integer   | null:false   |
-| income_id              | integer   | null:false   | 
-| liking                 | string    | null:false   |
-| user                   | references| foreign: key true|
+・URL
+    https://meet-with.herokuapp.com/
 
-### Association
-- belongs_to :user
+・テスト用アカウント
+   email ikekou@gmail.com
+   password  ikekou0015
+
+   email  ikeritu@gmail.com
+   password ikeritu0015
+
+・利用方法
+    新規登録をしてツイートを投稿します。
+    投稿一覧ページからユーザー詳細ページに遷移できます。
+    ユーザー詳細ページからフォローすることができます。
 
 
-## meets テーブル
-| Column                 | Type       | Options            |
-| ---------------------- | ------     | -------------------|
-| text                   | text       | null: false        |
-| user                   | references | foreign_key: true  |
+・目指した課題解決
+    日常に異性との出会いがない方々が気軽にコミュニケーションをとって出会える場を作るため
 
-### Association
-- belongs_to :user
-- has_many   :comments 
+・要件定義
+    
+  1、画像投稿を実装したユーザー登録機能
+  2, ユーザー登録にSNSアカウントでの登録機能
+  3, Actioncableを用いた投稿観覧機能
+  4, ログインユーザーのフォロー機能
+  5, フォローしあったユーザー同士のマッチング機能
+  6, マッチングしたユーザーの個人ルームのチャット機能
+  7, S3の導入
 
-## comments テーブル
-| Column     | Type          | Options           |
-| -----------| ----------    | ----------------- |
-| meet       | references    | foreign_key: true |
-| user       | references    | foreign_key: true |
-| text       | text          | null:      false  |
-### Association
- 
-- belongs_to :user
-- belongs_to :meet
+・実装した機能について
+   1, 画像投稿を実装したユーザー登録機能
+        ~deviseを使いユーザー管理機能を実装しました
+   2, ユーザー登録にSNSアカウントでの登録機能
+        ~ログイン方法はfacebook,googleアカウントとメールアドレスの3つから選択可能です。
+   3, Actioncableを用いた投稿観覧機能
+        ~投稿ページと投稿一覧ページが一つのページになっています。
+   4, ログインユーザーのフォロー機能
+        ~ユーザー詳細ページにてフォローできます。
+        ~フォローしたユーザーの一覧をトップページにて観覧できます.
 
+・実装予定の機能
+    5, フォローしあったユーザー同士のマッチング機能
+    6, マッチングしたユーザーの個人ルームのチャット機能
+    7, S3の導入
 
+・データベース設計
+  ER図 https://gyazo.com/7f5bf7c34cbd035669f06fe723cc72b7
+    
+・使用したプログラム
+  ruby,javasprict,bootstrap
