@@ -27,8 +27,12 @@
         <a class="nav-link" href="/">トップページ <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link text-dark" href="#">ツイート</a> 
+      <% if user_signed_in? %>
+          <%= link_to "つぶやき一覧", new_meet_with_path, class:"nav-link text-dark"  %>
+      <% else %>
+          <a class="nav-link text-dark" href="#">新規登録→</a>
       </li>
+      <% end %>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle text-dark", href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           ユーザー
@@ -42,7 +46,7 @@
             <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class:"dropdown-item text-dark" %>
             <%= link_to "プロフィール編集", edit_user_registration_path, class:"dropdown-item text-dark" %>
           <div class="dropdown-divider"></div>
-            <%= link_to "つぶやき一覧", new_meet_with_path, class:"dropdown-item" %>
+            <%= link_to "マイページへ", user_path(current_user), class:"dropdown-item" %>
         </div>
         <% end %>
       </li>
