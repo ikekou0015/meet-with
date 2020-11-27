@@ -4,57 +4,145 @@
   </div>
 <%= image_tag @user.image, class:"rounded mx-auto d-block img-fluid col-4 img-thumbnail" if @user.image.attached? %>
  
- <div class="d-flex justify-content-center">
- <ul class="list-group mt-5 col-5   ">
-  <li class="list-group-item list-group-item-danger border border-danger">ニックネーム　　　　<%= @user.nickname %></li>
-  <li class="list-group-item list-group-item-danger border border-danger">年齢　　　　　　　　<%= @user.age %></li>
-  <li class="list-group-item list-group-item-danger border border-danger">身長　　　　　　　　<%= @user.height %></li>
-  <li class="list-group-item list-group-item-danger border border-danger">性別　　　　　　　　<%= @user.gender.name %></li>
-  <li class="list-group-item list-group-item-danger border border-danger">体型　　　　　　　　<%= @user.body.name %></li>
-  <li class="list-group-item list-group-item-danger border border-danger">血液型　　　　　　　<%= @user.blood_type.name %></li>
-  <li class="list-group-item list-group-item-danger border border-danger">出身地　　　　　　　<%= @user.birth_place.name %></li>
-  <li class="list-group-item list-group-item-danger border border-danger">居住地　　　　　　　<%= @user.residence.name %></li>
-  <li class="list-group-item list-group-item-danger border border-danger">職業　　　　　　　　<%= @user.occupation.name %></li>
-  <li class="list-group-item list-group-item-danger border border-danger">年収　　　　　　　　<%= @user.income.name %></li>
+ <table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col "></th>
+      <th scope="col ">ニックネーム</th>
+      <th scope="col text-center"></th>
+      <th scope="col text-center"><%= @user.nickname %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row"></th>
+      <td>年齢</td>
+      <td></td>
+      <td><%= "#{@user.age}歳" %></td>
+    </tr>
+    <tr>
+      <th scope="row"></th>
+      <td>身長</td>
+      <td></td>
+      <td><%= "#{@user.height}cm" %></td>
+    </tr>
+    <tr>
+      <th scope="row"></th>
+      <td>性別</td>
+      <td></td>
+      <td><%= @user.gender.name %></td>
+    </tr>
+    <tr>
+      <th scope="row"></th>
+      <td>体型</td>
+      <td></td>
+      <td><%= @user.body.name %></td>
+    </tr>
+    <tr>
+      <th scope="row"></th>
+      <td>血液型</td>
+      <td></td>
+      <td><%= @user.blood_type.name %></td>
+    </tr>
+    <tr>
+      <th scope="row"></th>
+      <td>出身地</td>
+      <td></td>
+      <td><%= @user.birth_place.name %></td>
+    </tr>
+    <tr>
+      <th scope="row"></th>
+      <td>居住地</td>
+      <td></td>
+      <td><%= @user.residence.name %></td>
+    </tr>
+    <tr>
+      <th scope="row"></th>
+      <td>職業</td>
+      <td></td>
+      <td><%= @user.occupation.name %></td>
+    </tr>
+    <tr>
+      <th scope="row"></th>
+      <td>年収</td>
+      <td></td>
+      <td><%= @user.income.name %></td>
+    </tr>
+  </tbody>
+</table>
+ 
+  <ul class="list-group list-group-horizontal-lg d-flex justify-content-center mb-3">
+  <li class="list-group-item col-3 text-center"><%= "いいね👍してる数: #{@user.follower.count}" %></li>
+  
+  <li class="list-group-item col-3 text-center"><%= "いいね👍された数: #{@user.followed.count}" %></li>
 </ul>
-</div>
-<h2>ユーザー詳細ページ</h2>
-<p><%= "id: #{@user.id}" %></p>
-<p><%= "フォロー数: #{@user.follower.count}" %></p>
-<p><%= "フォロワー数: #{@user.followed.count}" %></p>
+  
+  
 <% unless @user == current_user %>
   <% if current_user.following?(@user) %>
-    <%= link_to 'フォロー外す', unfollow_path(@user.id), method: :POST %>
+    <%= link_to 'いいね済み', unfollow_path(@user.id), class:"btn btn-outline-danger rounded-pill mx-auto mb-4 col-3", method: :POST %>
   <% else %>
-    <%= link_to 'フォローする', follow_path(@user.id), method: :POST %>
+    <%= link_to '👍いいね', follow_path(@user.id), class:"btn btn-outline-danger rounded-pill mx-auto mb-4 col-3", method: :POST %>
   <% end %>
 <% end %>
-<p></p>
 
-<h3>フォロー一覧</h3>
-  <% @user.following_user.where.not(id: current_user.id).each do |user| %>
-    <p>
-      <%= "id: #{user.id} email: #{user.email}" %>
+
+<h3 class="mt-5 mx-auto">いいね👍してるユーザー</h3>
+<% @user.following_user.where.not(id: current_user.id).each do |user| %>
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col">ニックネーム</th>
+      <th scope="col">年齢</th>
+      <th scope="col">プロフィール</th>
+      <th scope="col">いいね</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row"><%= user.nickname %></th>
+      <td><%= "#{user.age}歳" %></td>
+      <td><%= link_to "プロフィール詳細", user_path(user), class:"btn btn-secondary btn-sm rounded-pill" %></td>
       <% if current_user.following?(user) %>
-        <%= link_to 'フォロー外す', unfollow_path(user.id), method: :POST %>
+      <td>
+        <%= link_to 'いいね解除', unfollow_path(user.id), class:"btn btn-outline-danger btn-sm rounded-pill", method: :POST %>
       <% else %>
-        <%= link_to 'フォローする', follow_path(user.id), method: :POST %>
+        <%= link_to '👍いいね', follow_path(user.id), class:"btn btn-outline-danger btn-sm rounded-pill", method: :POST %>
       <% end %>
-      <%= link_to "show", user_path(user) %>
-    </p>
+      </td>
+    </tr>
+  </tbody>
+</table>
   <% end %>
-<h3>フォロワー一覧</h3>
+<h3 class="mt-2 mx-auto">いいね👍されたユーザー</h3>
   <% @user.follower_user.where.not(id: current_user.id).each do |user| %>
-    <p>
-      <%= "id: #{user.id} email: #{user.email}" %>
+    <table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col">ニックネーム</th>
+      <th scope="col">年齢</th>
+      <th scope="col">プロフィール</th>
+      <th scope="col">いいね</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row"><%= user.nickname %></th>
+      <td><%= "#{user.age}歳" %></td>
+      <td><%= link_to "プロフィール詳細", user_path(user), class:"btn btn-secondary btn-sm rounded-pill" %></td>
       <% if current_user.following?(user) %>
-        <%= link_to 'フォロー外す', unfollow_path(user.id), method: :POST %>
+      <td>
+        <%= link_to 'いいね解除', unfollow_path(user.id), class:"btn btn-outline-danger btn-sm rounded-pill", method: :POST %>
       <% else %>
-        <%= link_to 'フォローする', follow_path(user.id), method: :POST %>
+        <%= link_to '👍いいね', follow_path(user.id), class:"btn btn-outline-danger btn-sm rounded-pill", method: :POST %>
       <% end %>
-      <%= link_to "show", user_path(user) %>
-    </p>
-  <% end %>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<% end %>
 </div>
+
+
 
 <%= render "shared/footer"%> 
