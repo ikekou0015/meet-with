@@ -46,7 +46,30 @@
       </div>
    </div>
 
-   
+  
+  <% if user_signed_in? %>
+  <h2 class="text-center mt-5 py-3">ユーザー一覧</h2>
+  <div class="d-flex flex-row mr-1 ml-1">
+  <% User.all.where.not(id: current_user.id).each do |user| %>
+<div class="card ml-2 mr-2" style="width: 16rem;">
+  <svg class="bd-placeholder-img card-top-img"  width="1" height="1"  preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Image cap"><%= image_tag user.image %></svg>
+  <div class="card-body">
+    <h5 class="card-title text-center"><%= user.nickname %></h5>
+    <p class="card-text text-center"><%= user.age %>　<%= user.residence.name %></p>
+    <% if current_user.following?(user) %>
+    <p class="d-flex justify-content-center">
+        <%= link_to 'いいね済み', unfollow_path(user.id), class:"btn btn-outline-danger btn-sm rounded-pill", method: :POST %>
+      <% else %>
+        <%= link_to '👍いいね！', follow_path(user.id), class:"btn btn-outline-danger btn-sm rounded-pill", method: :POST %>
+      <% end %>
+      <%= link_to "ユーザー詳細", user_path(user), class:"btn btn-secondary btn-sm rounded-pill" %>
+    </p>
+  </div>
+</div>
+<% end %>
+<% end %>
+
+</div>
 <!--利用者の声--->  
   <div id="Flex">
     <h2 class="text-center mt-5 py-3">利用者の声</h2>
