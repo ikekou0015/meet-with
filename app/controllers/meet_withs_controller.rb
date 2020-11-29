@@ -14,7 +14,7 @@ class MeetWithsController < ApplicationController
       ActionCable.server.broadcast 'meet_with_channel', content: @meet_with
       redirect_to new_meet_with_path 
   end
-
+  
   def destroy
     meet_with = Meetwith.find(params[:id])
     meet_with.destroy

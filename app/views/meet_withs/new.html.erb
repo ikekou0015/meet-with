@@ -13,7 +13,7 @@
  <% end %>
    </div>
    </div>
-  <div class="container  mt-5 mb-5 bg-light">
+  <div class="container mb-5 bg-light">
   <% @meet_withs.reverse_each do |meet_with| %>
   <div class="media shadow-sm p-1 mb-5 bg-white rounded">
    <%= link_to image_tag(meet_with.user.image,class:"rounded d-block col-5 m-1 rounded-circle"), user_path(meet_with.user.id) %>
