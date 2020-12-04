@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   root to: 'meet_withs#index'
   resources :meet_withs, only: [:new, :create, :destroy]
   resources :users, only: [:show, :new]
+  resources :rooms, only: [:new, :create, :destroy] do
   resources :messages, only: [:index, :create]
   end
   
