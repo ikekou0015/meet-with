@@ -1,0 +1,12 @@
+<div class="container mt-5 pt-3 bg-info">
+<div class="media shadow-none p-1 bg-white rounded col-6">
+<%= link_to image_tag(message.user.image,class:"rounded d-block col-5 m-1 rounded-circle") %>
+      <!-- 投稿したユーザー名情報を出力する -->
+      <div class="media-body">
+      <h5 class="mt-2"><%= message.user.nickname %></h5>
+      <!-- 投稿したメッセージ内容を記述する -->
+      <div><%= message.content %></div>
+      <!-- 投稿した時刻を出力する -->
+      <%= shape_create_time(message.created_at) %>
+</div>
+</div>

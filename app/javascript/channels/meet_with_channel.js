@@ -10,9 +10,9 @@ consumer.subscriptions.create("MeetWithChannel", {
   },
 
   received(data) {
-    const html = `<p>${data.content.text.title}</p>`;
-    const meet_with = document.getElementById('meet_with_text, meet_with_title');
-    const newMeet_with = document.getElementById('meet_with_text, meet_with_title');
+    const html = `<p>${data.content.text}</p>`;
+    const meet_with = document.getElementById('meet_with_text');
+    const newMeet_with = document.getElementById('meet_with_text');
     meet_with.insertAdjacentHTML('afterbegin', html);
     newMeet_with.value='';
     // Called when there's incoming data on the websocket for this channel
