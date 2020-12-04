@@ -6,7 +6,9 @@ Rails.application.routes.draw do
   root to: 'meet_withs#index'
   resources :meet_withs, only: [:new, :create, :destroy]
   resources :users, only: [:show, :new]
-
+  resources :messages, only: [:index, :create]
+  end
+  
   post 'follow/:id' => 'relationships#follow', as: 'follow' # フォローする
   post 'unfollow/:id' => 'relationships#unfollow', as: 'unfollow' # フォロー外す
   

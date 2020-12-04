@@ -11,6 +11,10 @@ class User < ApplicationRecord
   has_many :followed, class_name: "Relationship", foreign_key: "followed_id", dependent: :destroy # フォロワー取得
   has_many :following_user, through: :follower, source: :followed # 自分がフォローしている人
   has_many :follower_user, through: :followed, source: :follower # 自分をフォローしている人
+
+  has_many :room_users
+  has_many :rooms, through: :room_users
+  has_many :messages
   
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to :body
