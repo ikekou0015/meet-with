@@ -3,6 +3,7 @@ class RoomsController < ApplicationController
   def new
     @room = Room.new
     @rooms = Room.all
+    
   end
   
   def create

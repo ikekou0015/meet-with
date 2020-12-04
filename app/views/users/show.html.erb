@@ -79,7 +79,7 @@
   
   
 <% unless @user == current_user %>
-    <%= link_to '個人メッセージを送る', new_room_path, class:"btn btn-outline-success rounded-pill mx-auto mb-4 col-3", method: :POST %>
+    <%= link_to '個人メッセージを送る', new_room_path, class:"btn btn-outline-success rounded-pill mx-auto mb-4 col-3" %>
   <% if current_user.following?(@user) %>
     <%= link_to 'いいね済み', unfollow_path(@user.id), class:"btn btn-outline-danger rounded-pill mx-auto mb-4 col-3", method: :POST %>
   <% else %>
