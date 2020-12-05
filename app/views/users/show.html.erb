@@ -72,14 +72,18 @@
 </table>
  
   <ul class="list-group list-group-horizontal-lg d-flex justify-content-center mb-3">
-  <li class="list-group-item col-3 text-center"><%= "いいね👍してる数: #{@user.follower.count}" %></li>
+    <li class="list-group-item col-3 text-center"><%= "いいね👍してる数: #{@user.follower.count}" %></li>
   
-  <li class="list-group-item col-3 text-center"><%= "いいね👍された数: #{@user.followed.count}" %></li>
-</ul>
-  
+    <li class="list-group-item col-3 text-center"><%= "いいね👍された数: #{@user.followed.count}" %></li>
+ </ul>
+  <ul class="list-group list-group-horizontal-lg d-flex justify-content-center mb-3">
+       <% current_user.rooms.each do |room| %>
+       <li class="list-group-item col-3 text-center"><%= link_to room.name, room_messages_path(room) %></li>
+  <% end %>
+  </ul>
+
   
 <% unless @user == current_user %>
-    <%= link_to '個人メッセージを送る', new_room_path, class:"btn btn-outline-success rounded-pill mx-auto mb-4 col-3" %>
   <% if current_user.following?(@user) %>
     <%= link_to 'いいね済み', unfollow_path(@user.id), class:"btn btn-outline-danger rounded-pill mx-auto mb-4 col-3", method: :POST %>
   <% else %>

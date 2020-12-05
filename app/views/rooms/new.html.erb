@@ -1,10 +1,8 @@
-
+<div class="container mt-5 mb-5 bg-light">
   <h1>新規チャットルーム</h1>
       <%=form_with model: @room, local: true do |f|%>
-    
-      
-    
-      <div class='chat-room-form__field--right'>
+      <div><%= f.text_field :name, class:'form-control mb-3', placeholder: 'チャットルーム名を入力してください' %>
+      </div>
       <select name="room[user_ids][]">
          <option value="">チャットするユーザーを選択してください</option>
          <% User.where.not(id: current_user.id).each do |user| %>
@@ -12,11 +10,12 @@
          <% end %>
        </select>
        <input name="room[user_ids][]" type="hidden" value=<%= current_user.id %>>
-      </div>
       <div>
-        <%= f.submit class: 'chat-room-form__action-btn'%>
+        <%= f.submit "ルームを作る", class:'btn btn-primary mt-5 mb-3 col-4'%>
+      </div>
       </div>
     </div>
   <% end %>
+</div>
 </div>
 
